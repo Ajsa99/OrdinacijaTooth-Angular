@@ -1,0 +1,72 @@
+<div class="m-3 text-start">
+  <h1 class="pt-3" style="color: #1b91e0; font-family: 'Caladea'">
+    Stomatolozi:
+  </h1>
+  <hr style="border: 1.5px solid #1b91e0" />
+  <div class="d-flex align-items-center">
+    <div class="col-8">
+      <input
+        type="text"
+        placeholder="Pretraga..."
+        class="form-control"
+        style="border: 2px solid #5687a7; border-radius: 5px"
+        [(ngModel)]="searchQuery"
+        (input)="filterStomatolozi()"
+      />
+    </div>
+
+    <div class="col-4 d-flex align-items-center">
+      <h6
+        style="
+          margin-bottom: 0px;
+          padding: 10px;
+          color: #1b91e0;
+          border-bottom: 1px solid rgb(241, 241, 241);
+        "
+      >
+        Filtriranje:
+      </h6>
+      <select
+        (change)="filterStomatolozi()"
+        [(ngModel)]="selectedSearchBy"
+        class="form-select"
+        style="color: #1b91e0; border: 2px solid #5687a7; border-radius: 5px"
+      >
+        <option value="default" hidden disabled selected>
+          Pretraga po imenu
+        </option>
+        <option value="ime">Po imenu</option>
+        <option value="prezime">Po prezimenu</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mt-2" style="overflow: auto; max-height: 60vh">
+    <table class="table table-secondary text-center">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ime</th>
+          <th scope="col">Prezime</th>
+          <th scope="col">Email</th>
+          <th scope="col">Informacije</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stomatolog of filteredStomatolozi; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ stomatolog.ime }}</td>
+          <td>{{ stomatolog.prezime }}</td>
+          <td>{{ stomatolog.email }}</td>
+          <td>
+            <i
+              [routerLink]="['/korisnikinfo/' + stomatolog.id]"
+              class="bi bi-person-lines-fill"
+              style="font-size: 25px; cursor: pointer"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

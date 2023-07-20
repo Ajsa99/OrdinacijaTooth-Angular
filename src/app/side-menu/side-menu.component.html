@@ -1,0 +1,156 @@
+<div class="row w-100">
+  <div
+    class="col-md-3"
+    style="width: 25%"
+    *ngIf="!isRegistracijaRouter() && !isPrijavaRouter()"
+  >
+    <nav
+      class="navbar navbar-expand-md navbar-light"
+      style="height: 90vh; background-color: #5687a7"
+    >
+      <ul class="navbar-nav flex-column" style="font-size: 16px; width: 100%">
+        <li class="nav-item">
+          <div
+            class="d-flex flex-column align-items-center"
+            style="width: 100%"
+          >
+            <div
+              class="rounded-circle text-center"
+              style="
+                width: 70%;
+                height: 210px;
+                background-color: #cad7e0;
+                margin-bottom: 5px;
+              "
+            >
+              <i
+                *ngIf="tip === 'Stomatolog'"
+                class="bi bi-person-lines-fill"
+                style="font-size: 130px; color: #1b91e0"
+              ></i>
+              <i
+                *ngIf="tip === 'Administrator'"
+                class="bi bi-person-fill-lock"
+                style="font-size: 130px; color: #1b91e0"
+              ></i>
+            </div>
+            <div class="text-center" style="width: 100%">
+              <p style="margin: 0; font-size: 18px; color: #0c3f61">
+                {{ ime }} {{ prezime }}
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  color: white;
+                  font-size: 14px;
+                  background-color: #1b91e0;
+                  width: 100%;
+                  padding: 2px;
+                  color: #cad7e0;
+                "
+              >
+                {{ tip }}
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            style="color: white; padding: 15px"
+            [routerLink]="['/pocetna']"
+            routerLinkActive="router-link-active"
+            [class.active-blue]="isActive('/pocetna')"
+            >Početna</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="tip === 'Stomatolog'">
+          <a
+            class="nav-link"
+            style="color: white; padding: 15px"
+            [routerLink]="['/pacijenti']"
+            routerLinkActive="router-link-active"
+            [class.active-blue]="isActive('/pacijenti')"
+            >Pacijenti</a
+          >
+          <ul style="font-size: 14px; width: 100%">
+            <li class="nav-item" style="list-style-type: none">
+              <a
+                class="nav-link"
+                style="color: white; padding: 10px"
+                [routerLink]="['/dodajpacijenta']"
+                routerLinkActive="router-link-active"
+                [class.active-blue]="isActive('/dodajpacijenta')"
+                >Dodaj pacijenta</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" *ngIf="tip === 'Stomatolog'">
+          <a
+            class="nav-link"
+            style="color: white; padding: 15px"
+            [routerLink]="['/termini']"
+            routerLinkActive="router-link-active"
+            [class.active-blue]="isActive('/termini')"
+            >Termini</a
+          >
+          <ul style="font-size: 14px; width: 100%">
+            <li class="nav-item" style="list-style-type: none">
+              <a
+                class="nav-link"
+                style="color: white; padding: 10px"
+                [routerLink]="['/zakazitermin']"
+                routerLinkActive="router-link-active"
+                [class.active-blue]="isActive('/zakazitermin')"
+                >Zakazi termin</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" *ngIf="tip == 'Administrator'">
+          <a
+            class="nav-link"
+            style="color: white; padding: 15px"
+            [routerLink]="['/stomatolozi']"
+            routerLinkActive="router-link-active"
+            [class.active-blue]="isActive('/stomatolozi')"
+            >Stomatolozi</a
+          >
+          <ul style="font-size: 14px; width: 100%">
+            <li class="nav-item" style="list-style-type: none">
+              <a
+                class="nav-link"
+                style="color: white; padding: 10px"
+                [routerLink]="['/stomatologodobri']"
+                routerLinkActive="router-link-active"
+                [class.active-blue]="isActive('/stomatologodobri')"
+                >Stomatolozi na čekanju</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" *ngIf="tip == 'Administrator'">
+          <a
+            class="nav-link"
+            style="color: white; padding: 15px"
+            [routerLink]="['/administratori']"
+            routerLinkActive="router-link-active"
+            [class.active-blue]="isActive('/administratori')"
+            >Administratori</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div
+    style="height: 90vh"
+    class="text-center"
+    [style.width]="
+      !isRegistracijaRouter() && !isPrijavaRouter() ? '75%' : '100%'
+    "
+  >
+    <router-outlet></router-outlet>
+  </div>
+</div>

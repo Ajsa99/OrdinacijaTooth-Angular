@@ -1,0 +1,118 @@
+<div
+  class="container text-center m-5 mt-3 mb-0"
+  style="
+    border-radius: 5px;
+    width: 90%;
+    height: 85vh;
+    background-color: #126094;
+    position: relative;
+  "
+>
+  <h2 style="color: white; font-family: 'Jackues Francios'" class="pt-3">
+    STOMATOLOG
+  </h2>
+  <hr style="border: 1px solid white" />
+
+  <div class="mb-3">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          style="cursor: pointer"
+          aria-current="page"
+          (click)="showPregledi = false"
+          [ngClass]="{ active: !showPregledi }"
+          >Informacije</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          style="cursor: pointer"
+          (click)="showPregledi = true"
+          [ngClass]="{ active: showPregledi }"
+          >Pacijenti</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <table
+    *ngIf="!showPregledi"
+    class="table text-start m-4"
+    style="color: white; font-family: 'Jackues Francios'"
+  >
+    <tr>
+      <th scope="col" class="p-2">Ime</th>
+      <td class="p-2">{{ stomatolog.ime }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-2">Prezime:</th>
+      <td class="p-2">{{ stomatolog.prezime }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-2">Pol:</th>
+      <td class="p-2">{{ stomatolog.pol }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-2">Datum rodjenja:</th>
+      <td class="p-2">{{ stomatolog.datumRodjenja }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-2">Broj telefona:</th>
+      <td class="p-2">+381 {{ stomatolog.telefon }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-2">Drzava:</th>
+      <td class="p-2">{{ stomatolog.drzava }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-2">Grad:</th>
+      <td class="p-2">{{ stomatolog.grad }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-2">Adresa:</th>
+      <td class="p-2">{{ stomatolog.adresa }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-2">Email:</th>
+      <td class="p-2">{{ stomatolog.email }}</td>
+    </tr>
+  </table>
+
+  <div *ngIf="showPregledi" style="overflow: auto; max-height: 55vh">
+    <div
+      *ngFor="let pacijent of pacijenti; let i = index"
+      class="text-start p-3 m-2 mb-3"
+      style="background-color: aliceblue; border-radius: 5px"
+    >
+      <div>
+        <p>
+          <span style="color: gray">{{ i + 1 }}:</span> {{ pacijent.ime }}
+          {{ pacijent.prezime }} -
+          <span style="color: #126094">{{ pacijent.email }}</span>
+        </p>
+        <p>
+          <span style="color: #126094">Datum rodjenja:</span>
+          {{ pacijent.datumRodjenja }}
+        </p>
+        <p>
+          <span style="color: #126094">Adresa:</span> {{ pacijent.drzava }},
+          {{ pacijent.grad }},
+          {{ pacijent.adresa }}
+        </p>
+        <p>
+          <span style="color: #126094">Telefon:</span> +381{{
+            pacijent.telefon
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 10px; right: 10px">
+    <button class="btn btn-secondary" [routerLink]="['/stomatolozi']">
+      Nazad
+    </button>
+  </div>
+</div>

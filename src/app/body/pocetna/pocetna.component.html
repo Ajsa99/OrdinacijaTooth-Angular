@@ -1,0 +1,54 @@
+<div
+  class="container text-center bg-white m-2 mt-3"
+  style="border-radius: 5px; width: 100%; height: 85vh"
+>
+  <h2 style="color: #1b91e0" class="pt-2" *ngIf="korisnik.tip == 'Stomatolog'">
+    STOMATOLOG
+  </h2>
+  <h2
+    style="color: #1b91e0"
+    class="pt-2"
+    *ngIf="korisnik.tip == 'Administrator'"
+  >
+    ADMINISTRATOR
+  </h2>
+  <hr style="border: 1.5px solid #1b91e0" />
+  <table class="table p-3 text-start">
+    <tr>
+      <th scope="col" class="p-3">Ime:</th>
+      <td class="p-3">{{ korisnik.ime }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-3">Prezime:</th>
+      <td class="p-3">{{ korisnik.prezime }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-3">Pol:</th>
+      <td class="p-3">{{ korisnik.pol }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-3">Datum rodjenja:</th>
+      <td class="p-3">{{ korisnik.datumRodjenja }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-3">Broj telefona:</th>
+      <td class="p-3">+381 {{ korisnik.telefon }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-3">Drzava:</th>
+      <td class="p-3">{{ korisnik.drzava }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-3">Grad:</th>
+      <td class="p-3">{{ korisnik.grad }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-3">Adresa:</th>
+      <td class="p-3">{{ korisnik.adresa }}</td>
+    </tr>
+    <tr>
+      <th scope="col" class="p-3">Email:</th>
+      <td class="p-3">{{ korisnik.email }}</td>
+    </tr>
+  </table>
+</div>

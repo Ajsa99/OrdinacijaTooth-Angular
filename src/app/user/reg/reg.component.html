@@ -1,0 +1,309 @@
+<div
+  class="px-5 text-center d-flex align-items-center justify-content-center"
+  style="background-color: #cad7e0"
+>
+  <div class="p-5 bg-white w-50 m-5" style="border-radius: 5px">
+    <h3 style="font-family: 'Caladea'; color: #126094">Registracija</h3>
+    <hr style="color: #126094" />
+
+    <form
+      [formGroup]="registrationForm"
+      (ngSubmit)="onSubmit()"
+      style="color: #126094"
+    >
+      <div class="row">
+        <div class="mb-3 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="Tip" class="form-label">Tip korisnika:</label>
+              <select
+                class="form-control"
+                style="border: 1px solid #5690ff"
+                formControlName="Tip"
+                placeholder="Unesite tip korisnika"
+              >
+                <option value="Stomatolog">Stomatolog</option>
+                <option value="Administrator">Administrator</option>
+              </select>
+              <span
+                *ngIf="!Tip.valid && (Tip.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite tip korisnika</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="Ime" class="form-label">Ime:</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Ime"
+                style="border: 1px solid #5687a7"
+                placeholder="Unesite ime"
+              />
+              <span
+                *ngIf="!Ime.valid && (Ime.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite ime</span
+              >
+            </div>
+            <div class="col">
+              <label for="Prezime" class="form-label">Prezime:</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Prezime"
+                style="border: 1px solid #5687a7"
+                placeholder="Unesite prezime"
+              />
+              <span
+                *ngIf="!Prezime.valid && (Prezime.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesit prezime</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="Pol" class="form-label">Pol:</label>
+              <select
+                class="form-control"
+                style="border: 1px solid #5690ff"
+                formControlName="Pol"
+                placeholder="Unesite tip korisnika"
+              >
+                <option value="Zenski">Zenski</option>
+                <option value="Muski">Muski</option>
+              </select>
+              <span
+                *ngIf="!Pol.valid && (Pol.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite pol</span
+              >
+            </div>
+            <div class="col">
+              <label for="DatumRodjenja" class="form-label"
+                >Datum rodjenja:</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                formControlName="DatumRodjenja"
+                style="border: 1px solid #5687a7"
+                placeholder="Unesite datum rodjenja"
+              />
+              <span
+                *ngIf="
+                  !DatumRodjenja.valid &&
+                  (DatumRodjenja.touched || userSubmitted)
+                "
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite datum rodjenja</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 text-start">
+          <div class="form-group">
+            <label for="Telefon" class="form-label">Broj telefona:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text"
+                  style="
+                    background-color: none;
+                    border: 1px solid #5690ff;
+                    border-radius: 0%;
+                    color: #5690ff;
+                  "
+                  >+381</span
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Telefon"
+                style="border: 1px solid #5687a7"
+                placeholder="Unesite broj telefona"
+              />
+            </div>
+            <span
+              *ngIf="!Telefon.valid && (Telefon.touched || userSubmitted)"
+              class="error-block"
+              style="color: red"
+              >Molim vas unesite broj telefona</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="Drzava" class="form-label">Drzava:</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Drzava"
+                style="border: 1px solid #5687a7"
+                placeholder="Unesite drzavu"
+              />
+              <span
+                *ngIf="!Drzava.valid && (Drzava.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite drzavu</span
+              >
+            </div>
+            <div class="col">
+              <label for="Grad" class="form-label">Grad:</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Grad"
+                style="border: 1px solid #5687a7"
+                placeholder="Unesite grad"
+              />
+              <span
+                *ngIf="!Grad.valid && (Grad.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite grad</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 text-start">
+          <label for="Adresa" class="form-label">Adresa:</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="Adresa"
+            style="border: 1px solid #5687a7"
+            placeholder="Unesite adresa"
+          />
+          <span
+            *ngIf="!Adresa.valid && (Adresa.touched || userSubmitted)"
+            class="error-block"
+            style="color: red"
+            >Molim vas unesite adresu</span
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 text-start">
+          <label for="Email" class="form-label">Email:</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="Email"
+            style="border: 1px solid #5687a7"
+            placeholder="Unesite email"
+          />
+          <span
+            *ngIf="!Email.valid && (Email.touched || userSubmitted)"
+            class="error-block"
+            style="color: red"
+            >Molim vas unesite email</span
+          >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="password" class="form-label" style="color: #3a3a3a"
+                >Lozinka</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                style="border: 1px solid #5690ff"
+                formControlName="password"
+                placeholder="Unesite lozinku"
+              />
+              <span
+                *ngIf="!password.valid && (password.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+              >
+                <span *ngIf="password.errors?.['required']"
+                  >Molim vas unesite lozinku!</span
+                >
+                <span *ngIf="password.errors?.['minlength']"
+                  >Lozinka treba da sadrzi najmanje 8 karaktera
+                </span>
+              </span>
+            </div>
+            <div class="col">
+              <label for="cpassword" class="form-label" style="color: #3a3a3a"
+                >Potvrda lozinke</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                style="border: 1px solid #5690ff"
+                formControlName="confirmPassword"
+                placeholder="Potvrdite lozinku"
+              />
+              <span
+                *ngIf="
+                  !confirmPassword.valid &&
+                  (confirmPassword.touched || userSubmitted)
+                "
+                class="error-block"
+                style="color: red"
+              >
+                <span *ngIf="confirmPassword.hasError('required')"
+                  >Molim vas unesite potvrdu lozinke</span
+                >
+              </span>
+              <span
+                *ngIf="
+                  registrationForm.hasError('notmached') &&
+                  confirmPassword.valid
+                "
+                class="error-block"
+                style="color: red"
+                >Lozinke se ne poklapaju</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary mt-3 w-100"
+        style="background-color: #126094; border-radius: 15px"
+      >
+        Registruj se
+      </button>
+    </form>
+  </div>
+</div>

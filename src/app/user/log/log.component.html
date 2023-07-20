@@ -1,0 +1,72 @@
+<div
+  class="px-5 text-center d-flex align-items-center justify-content-center"
+  style="background-color: #cad7e0"
+>
+  <div class="p-5 bg-white w-50 m-5" style="border-radius: 5px">
+    <h3 style="font-family: 'Caladea'; color: #126094">Prijava</h3>
+    <hr style="color: #126094" />
+    <form
+      style="color: #126094"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="mb-3 text-start">
+        <label for="Email" class="form-label">Email:</label>
+        <input
+          type="text"
+          class="form-control"
+          style="border: 1px solid #5687a7"
+          formControlName="email"
+          placeholder="Unesite email"
+        />
+        <span
+          *ngIf="!email.valid && (email.touched || userSubmitted)"
+          style="color: red"
+        >
+          Molim vas unesite email
+        </span>
+      </div>
+
+      <div class="mb-3 text-start">
+        <label for="Loznika" class="form-label">Lozinka:</label>
+        <input
+          type="password"
+          class="form-control"
+          style="border: 1px solid #5687a7"
+          formControlName="password"
+          placeholder="Unesite lozinku"
+        />
+        <span
+          *ngIf="!password.valid && (password.touched || userSubmitted)"
+          style="color: red"
+        >
+          <span *ngIf="password.errors?.['required']"
+            >Molim vas unesite lozinku</span
+          >
+        </span>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary mt-3 w-100"
+        style="background-color: #126094; border-radius: 15px"
+      >
+        Potvrdi
+      </button>
+      <p
+        class="mt-3 mb-1 text-start"
+        style="color: black; font-family: 'Caladea'"
+      >
+        Niste registrovani?
+      </p>
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        style="background-color: white; color: #126094; border-radius: 15px"
+        [routerLink]="['/', 'registracija']"
+      >
+        Registruj se
+      </button>
+    </form>
+  </div>
+</div>

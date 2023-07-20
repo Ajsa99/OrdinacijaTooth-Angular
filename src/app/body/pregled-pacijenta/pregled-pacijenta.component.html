@@ -1,0 +1,127 @@
+<div
+  class="container text-center mr-5 ml-5 mt-1 p-2"
+  style="
+    border-radius: 5px;
+    width: 90%;
+    background-color: #126094;
+    position: relative;
+  "
+>
+  <h2 style="color: white; font-family: 'Jackues Francios'" class="pt-1">
+    PREGLED
+  </h2>
+  <hr style="border: 1px solid white" />
+  <p class="text-start" style="color: white; font-family: 'Jackues Francios'">
+    <b>{{ termini.ime }} {{ termini.prezime }}</b>
+  </p>
+  <form
+    [formGroup]="addForm"
+    (ngSubmit)="onSubmit()"
+    class="text-start d-flex flex-column"
+    style="
+      font-family: 'Caladea';
+      color: white;
+      justify-content: space-between;
+      height: 68vh;
+    "
+  >
+    <div class="mb-3">
+      <label for="BrojZuba" class="form-label">Broj zuba:</label>
+      <div class="row">
+        <div class="col">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="BrojZuba"
+            placeholder="Broj zuba"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="GronjaVilicaBr"
+            placeholder="Gornja vilica"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="DonjaVilicaBr"
+            placeholder="Donje vilica"
+          />
+        </div>
+      </div>
+      <span
+        *ngIf="
+          (!BrojZuba.valid && (BrojZuba.touched || userSubmitted)) ||
+          (!GronjaVilicaBr.valid &&
+            (GronjaVilicaBr.touched || userSubmitted)) ||
+          (!DonjaVilicaBr.valid && (DonjaVilicaBr.touched || userSubmitted))
+        "
+        class="error-block"
+        style="color: red"
+      >
+        Molim vas popunite sva polja za broj zuba.
+      </span>
+    </div>
+
+    <div class="mb-3">
+      <label for="Opis" class="form-label">Stanje:</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="StanjeGorinjeVilica"
+        placeholder="Stanje gornje vilice"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Stanje donje vilice"
+        formControlName="StanjeDonjaVilica"
+      />
+      <span
+        *ngIf="
+          (!StanjeGorinjeVilica.valid &&
+            (StanjeGorinjeVilica.touched || userSubmitted)) ||
+          (!StanjeDonjaVilica.valid &&
+            (StanjeDonjaVilica.touched || userSubmitted))
+        "
+        class="error-block"
+        style="color: red"
+      >
+        Molim vas popunite sva polja za broj zuba.
+      </span>
+    </div>
+
+    <div class="mb-3">
+      <label for="Opis" class="form-label">Opis:</label>
+      <textarea
+        name=""
+        class="form-control"
+        id=""
+        cols="50"
+        rows="3"
+        formControlName="Opis"
+        placeholder="..."
+      ></textarea>
+      <span
+        *ngIf="!Opis.valid && (Opis.touched || userSubmitted)"
+        class="error-block"
+        style="color: red"
+        >Molim vas unesite opis pregleda</span
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-warning w-100"
+      style="border: 1px solid black"
+    >
+      Potvrdi
+    </button>
+  </form>
+</div>
