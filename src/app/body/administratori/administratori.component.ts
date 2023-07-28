@@ -13,6 +13,8 @@ export class AdministratoriComponent {
   selectedSearchBy!: string;
   filteredAdministratori!: any[];
 
+  selectedSortBy: string = 'default';
+
   constructor(private korisnikService: KorisnikService) {}
 
   ngOnInit(): void {
@@ -26,22 +28,39 @@ export class AdministratoriComponent {
   }
 
   filterAdministratori() {
-    if (this.selectedSearchBy === 'ime') {
-      this.filteredAdministratori = this.administratori.filter(
-        (administrator) =>
-          administrator.ime
-            ?.toLowerCase()
-            .includes(this.searchQuery.toLowerCase())
-      );
-    } else if (this.selectedSearchBy === 'prezime') {
-      this.filteredAdministratori = this.administratori.filter(
-        (administrator) =>
-          administrator.prezime
-            ?.toLowerCase()
-            .includes(this.searchQuery.toLowerCase())
-      );
-    } else {
+    if (!this.searchQuery) {
       this.filteredAdministratori = [...this.administratori];
+    } else {
+      this.korisnikService
+        .filterKorisnikImePrezime(this.searchQuery)
+        .subscribe((res) => {
+          this.filteredAdministratori = res.filter((administrator) => {
+            return administrator.tip === 'Administrator';
+          });
+        });
+    }
+  }
+
+  sortAdministratori() {
+    if (this.selectedSortBy === 'ime') {
+      this.korisnikService.sortKorisnikiPoImenu().subscribe((res) => {
+        this.filteredAdministratori = res.filter((administrator) => {
+          return administrator.tip === 'Administrator';
+        });
+      });
+    } else if (this.selectedSortBy === 'prezime') {
+      this.korisnikService.sortKorisnikiPoPrezimenu().subscribe((res) => {
+        this.filteredAdministratori = res.filter((administrator) => {
+          return administrator.tip === 'Administrator';
+        });
+      });
+    } else {
+      this.korisnikService.getAllKorisnici().subscribe((res) => {
+        this.administratori = res.filter((administrator) => {
+          return administrator.tip === 'Administrator';
+        });
+        this.filteredAdministratori = [...this.administratori];
+      });
     }
   }
 }

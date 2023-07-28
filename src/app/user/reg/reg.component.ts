@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -49,14 +50,49 @@ export class RegComponent implements OnInit {
   createRegistrationForm() {
     this.registrationForm = this.fb.group(
       {
-        Ime: [null, Validators.required],
-        Prezime: [null, Validators.required],
+        Ime: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(20),
+          ],
+        ],
+        Prezime: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(20),
+          ],
+        ],
         Pol: [null, Validators.required],
         DatumRodjenja: [null, Validators.required],
         Telefon: [null, Validators.required],
-        Drzava: [null, Validators.required],
-        Grad: [null, Validators.required],
-        Adresa: [null, Validators.required],
+        Drzava: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(20),
+          ],
+        ],
+        Grad: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(20),
+          ],
+        ],
+        Adresa: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(30),
+          ],
+        ],
         Email: [null, [Validators.required, Validators.email]],
         password: [null, [Validators.required, Validators.minLength(8)]],
         confirmPassword: [null, Validators.required],
@@ -133,12 +169,27 @@ export class RegComponent implements OnInit {
       this.KorisnikService.registrationKorisnik(this.userData()).subscribe(
         (x) => {
           this.userAny = x;
+          this.registrationForm.reset();
+          this.userSubmitted = false;
+          alert('Čestitamo, uspešno ste se registrovali!');
+          this.router.navigate(['prijava']);
+        },
+        (error: HttpErrorResponse) => {
+          if (error.status === 400) {
+            // Obrada grešaka validacije sa servera
+            const validationErrors = error.error;
+            console.log(validationErrors);
+
+            // Prikaz greške korisniku u obliku alert-a
+            let errorMessage = 'Podacu koje ste uneli nisu validni';
+
+            alert(errorMessage);
+          } else {
+            // Obrada drugih grešaka
+            // Na primer, obraditi greške koje nisu vezane za validaciju
+          }
         }
       );
-      this.registrationForm.reset();
-      this.userSubmitted = false;
-      alert('Čestitamo, uspešno ste se registrovali!');
-      this.router.navigate(['prijava']);
     }
   }
 

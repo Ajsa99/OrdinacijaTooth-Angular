@@ -39,4 +39,22 @@ export class KorisnikService {
       `https://localhost:7190/api/Korisnik/DeleteKorisnik/${id}`
     );
   }
+
+  filterKorisnikImePrezime(imePrezime: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `https://localhost:7190/api/Korisnik/FilterKorisnik/${imePrezime}`
+    );
+  }
+
+  sortKorisnikiPoImenu(): Observable<any[]> {
+    return this.http.get<any[]>(
+      'https://localhost:7190/api/Korisnik/sortKorisniciIme'
+    );
+  }
+
+  sortKorisnikiPoPrezimenu(): Observable<any[]> {
+    return this.http.get<any[]>(
+      'https://localhost:7190/api/Korisnik/sortKorisniciPrezime'
+    );
+  }
 }

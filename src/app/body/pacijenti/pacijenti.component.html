@@ -24,58 +24,80 @@
           border-bottom: 1px solid rgb(241, 241, 241);
         "
       >
-        Filtriranje:
+        Sortiranje:
       </h6>
       <select
         class="form-select"
-        [(ngModel)]="selectedSearchBy"
-        (change)="filterPacijenti()"
+        [(ngModel)]="selectedSortBy"
+        (change)="sortPacijenti()"
         style="color: #1b91e0; border: 2px solid #5687a7; border-radius: 5px"
       >
-        <option value="default" hidden disabled selected>
-          Pretraga po imenu
-        </option>
+        <option value="default"></option>
         <option value="ime">Po imenu</option>
         <option value="prezime">Po prezimenu</option>
       </select>
     </div>
   </div>
 
-  <div class="mt-2" style="overflow: auto; max-height: 60vh">
-    <table class="table table-secondary text-center">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Ime</th>
-          <th scope="col">Prezime</th>
-          <th scope="col">Email</th>
-          <th scope="col">Karton</th>
-          <th>...</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let pacijent of filteredPacijenti; let i = index">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ pacijent.ime }}</td>
-          <td>{{ pacijent.prezime }}</td>
-          <td>{{ pacijent.email }}</td>
-          <td>
-            <i
-              [routerLink]="'/karton/' + pacijent.id"
-              class="bi bi-clipboard-data"
-              style="font-size: 25px; cursor: pointer"
-            ></i>
-          </td>
-          <td>
-            <button
-              class="btn btn-danger"
-              (click)="DeletePacijent(pacijent.id)"
-            >
-              Obrisi
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="mt-2">
+    <div style="height: 50vh">
+      <table class="table table-secondary text-center">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ime</th>
+            <th scope="col">Prezime</th>
+            <th scope="col">Email</th>
+            <th scope="col">Karton</th>
+            <th>...</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pacijent of filteredPacijenti; let i = index">
+            <th scope="row">{{ (currentPage - 1) * pageSize + i + 1 }}</th>
+            <td>{{ pacijent.ime }}</td>
+            <td>{{ pacijent.prezime }}</td>
+            <td>{{ pacijent.email }}</td>
+            <td>
+              <i
+                [routerLink]="'/karton/' + pacijent.id"
+                class="bi bi-clipboard-data"
+                style="font-size: 25px; cursor: pointer"
+              ></i>
+            </td>
+            <td>
+              <button
+                class="btn btn-danger"
+                (click)="DeletePacijent(pacijent.id)"
+              >
+                Obrisi
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-between mt-2">
+      <button
+        class="btn btn-primary"
+        [disabled]="currentPage === 1"
+        (click)="prevPage()"
+      >
+        Prethodna
+      </button>
+      <button
+        class="btn"
+        style="width: 10%; background-color: #5687a7; color: white"
+      >
+        {{ currentPage }}
+      </button>
+      <button
+        class="btn btn-primary"
+        [disabled]="currentPage === totalPages"
+        (click)="nextPage()"
+      >
+        Sledeća
+      </button>
+    </div>
   </div>
 </div>

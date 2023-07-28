@@ -24,17 +24,15 @@
           border-bottom: 1px solid rgb(241, 241, 241);
         "
       >
-        Filtriranje:
+        Sortiranje:
       </h6>
       <select
         class="form-select"
-        [(ngModel)]="selectedSearchBy"
-        (change)="filterStomatolozi()"
+        [(ngModel)]="selectedSortBy"
+        (change)="sortStomatolozi()"
         style="color: #1b91e0; border: 2px solid #5687a7; border-radius: 5px"
       >
-        <option value="default" hidden disabled selected>
-          Pretraga po imenu
-        </option>
+        <option value="default"></option>
         <option value="ime">Po imenu</option>
         <option value="prezime">Po prezimenu</option>
       </select>

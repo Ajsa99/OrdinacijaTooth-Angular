@@ -36,4 +36,27 @@ export class PacijentService {
     const url = `https://localhost:7190/api/Pacijent/editPacijent/${pacijentId}`;
     return this.http.put(url, pacijent);
   }
+
+  filterPacijentImePrezime(imePrezime: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `https://localhost:7190/api/Pacijent/FilterPacijent/${imePrezime}`
+    );
+  }
+
+  sortPacijentiPoImenu(): Observable<any[]> {
+    return this.http.get<any[]>(
+      'https://localhost:7190/api/Pacijent/sortPacijentiIme'
+    );
+  }
+
+  sortPacijentiPoPrezimenu(): Observable<any[]> {
+    return this.http.get<any[]>(
+      'https://localhost:7190/api/Pacijent/sortPacijentiPrezime'
+    );
+  }
+
+  getPacijentiByPage(page: any, pageSize: any, id: any): Observable<any[]> {
+    const url = `https://localhost:7190/api/Pacijent/Pacijenti/Page/${page}/${pageSize}/${id}`;
+    return this.http.get<any[]>(url);
+  }
 }

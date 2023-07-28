@@ -14,6 +14,8 @@ export class StomatologOdobriComponent {
   selectedSearchBy!: string;
   filteredStomatolozi!: any[];
 
+  selectedSortBy: string = 'default';
+
   constructor(
     private korisnikService: KorisnikService,
     private router: Router
@@ -30,18 +32,41 @@ export class StomatologOdobriComponent {
   }
 
   filterStomatolozi() {
-    if (this.selectedSearchBy === 'ime') {
-      this.filteredStomatolozi = this.stomatolozi.filter((stomatolog) =>
-        stomatolog.ime?.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    } else if (this.selectedSearchBy === 'prezime') {
-      this.filteredStomatolozi = this.stomatolozi.filter((stomatolog) =>
-        stomatolog.prezime
-          ?.toLowerCase()
-          .includes(this.searchQuery.toLowerCase())
-      );
-    } else {
+    if (!this.searchQuery) {
       this.filteredStomatolozi = [...this.stomatolozi];
+    } else {
+      this.korisnikService
+        .filterKorisnikImePrezime(this.searchQuery)
+        .subscribe((res) => {
+          this.filteredStomatolozi = res.filter((stomatolog) => {
+            return (
+              stomatolog.odobrenje === 0 && stomatolog.tip === 'Stomatolog'
+            );
+          });
+        });
+    }
+  }
+
+  sortStomatolozi() {
+    if (this.selectedSortBy === 'ime') {
+      this.korisnikService.sortKorisnikiPoImenu().subscribe((res) => {
+        this.filteredStomatolozi = res.filter((stomatolog) => {
+          return stomatolog.odobrenje === 0 && stomatolog.tip === 'Stomatolog';
+        });
+      });
+    } else if (this.selectedSortBy === 'prezime') {
+      this.korisnikService.sortKorisnikiPoPrezimenu().subscribe((res) => {
+        this.filteredStomatolozi = res.filter((stomatolog) => {
+          return stomatolog.odobrenje === 0 && stomatolog.tip === 'Stomatolog';
+        });
+      });
+    } else {
+      this.korisnikService.getAllKorisnici().subscribe((res) => {
+        this.stomatolozi = res.filter((stomatolog) => {
+          return stomatolog.odobrenje === 0 && stomatolog.tip === 'Stomatolog';
+        });
+        this.filteredStomatolozi = [...this.stomatolozi];
+      });
     }
   }
 
