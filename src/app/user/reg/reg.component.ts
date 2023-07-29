@@ -176,17 +176,12 @@ export class RegComponent implements OnInit {
         },
         (error: HttpErrorResponse) => {
           if (error.status === 400) {
-            // Obrada grešaka validacije sa servera
             const validationErrors = error.error;
             console.log(validationErrors);
 
-            // Prikaz greške korisniku u obliku alert-a
             let errorMessage = 'Podacu koje ste uneli nisu validni';
 
             alert(errorMessage);
-          } else {
-            // Obrada drugih grešaka
-            // Na primer, obraditi greške koje nisu vezane za validaciju
           }
         }
       );
