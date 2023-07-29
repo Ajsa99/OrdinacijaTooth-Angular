@@ -15,19 +15,19 @@
           "
         >
           <i
-            *ngIf="tip === 'Stomatolog'"
+            *ngIf="korisnik.tip === 'Stomatolog'"
             class="bi bi-person-lines-fill"
             style="font-size: 130px; color: #1b91e0"
           ></i>
           <i
-            *ngIf="tip === 'Administrator'"
+            *ngIf="korisnik.tip === 'Administrator'"
             class="bi bi-person-fill-lock"
             style="font-size: 130px; color: #1b91e0"
           ></i>
         </div>
         <div class="text-center" style="width: 100%">
           <p style="margin: 0; font-size: 18px; color: #0c3f61">
-            {{ ime }} {{ prezime }}
+            {{ korisnik.ime }} {{ korisnik.prezime }}
           </p>
           <p
             style="
@@ -40,7 +40,7 @@
               color: #cad7e0;
             "
           >
-            {{ tip }}
+            {{ korisnik.tip }}
           </p>
         </div>
       </div>
@@ -55,7 +55,7 @@
         >Početna</a
       >
     </li>
-    <li class="nav-item" *ngIf="tip === 'Stomatolog'">
+    <li class="nav-item" *ngIf="korisnik.tip === 'Stomatolog'">
       <a
         class="nav-link"
         style="color: white; padding: 15px"
@@ -77,7 +77,7 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item" *ngIf="tip === 'Stomatolog'">
+    <li class="nav-item" *ngIf="korisnik.tip === 'Stomatolog'">
       <a
         class="nav-link"
         style="color: white; padding: 15px"
@@ -99,7 +99,7 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item" *ngIf="tip == 'Administrator'">
+    <li class="nav-item" *ngIf="korisnik.tip == 'Administrator'">
       <a
         class="nav-link"
         style="color: white; padding: 15px"
@@ -121,7 +121,7 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item" *ngIf="tip == 'Administrator'">
+    <li class="nav-item" *ngIf="korisnik.tip == 'Administrator'">
       <a
         class="nav-link"
         style="color: white; padding: 15px"

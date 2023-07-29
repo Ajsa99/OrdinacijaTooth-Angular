@@ -27,11 +27,9 @@ import { AdministratoriComponent } from './body/administratori/administratori.co
 import { KorisnikInformacijeComponent } from './body/korisnik-informacije/korisnik-informacije.component';
 
 const appRouters: Routes = [
-  { path: '', redirectTo: '/prijava', pathMatch: 'full' },
-
   { path: 'pocetna', component: PocetnaComponent },
   { path: 'registracija', component: RegComponent },
-  { path: 'prijava', component: LogComponent },
+  { path: '', component: LogComponent },
   { path: 'pacijenti', component: PacijentiComponent },
   { path: 'termini', component: TerminiComponent },
   { path: 'karton/:id', component: KartonComponent },

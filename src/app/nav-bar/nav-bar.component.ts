@@ -39,6 +39,6 @@ export class NavBarComponent {
     localStorage.removeItem('tip');
     this.loggedinUser = '';
     this.typeUser = '';
-    this.router.navigate(['/prijava']);
+    this.router.navigate(['/']);
   }
 }
