@@ -24,7 +24,7 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.korisnikService.getKorisnikId(this.id).subscribe((res) => {
-      console.log(res);
+      this.korisnik = res;
     });
   }
 

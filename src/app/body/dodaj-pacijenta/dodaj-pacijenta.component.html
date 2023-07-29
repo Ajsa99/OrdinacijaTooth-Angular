@@ -1,214 +1,227 @@
-<div
-  class="container text-center mr-5 ml-5 mt-1 p-2"
-  style="
-    border-radius: 5px;
-    width: 90%;
-    background-color: #126094;
-    position: relative;
-  "
->
-  <h2 style="color: white; font-family: 'Jackues Francios'" class="pt-1">
-    KARTON
-  </h2>
-  <hr style="border: 1px solid white" />
+<div class="row w-100">
+  <div class="col-md-3">
+    <side-menu></side-menu>
+  </div>
 
-  <form
-    [formGroup]="addForm"
-    (ngSubmit)="onSubmit()"
-    class="text-start d-flex flex-column"
-    style="
-      font-family: 'Caladea';
-      color: white;
-      justify-content: space-between;
-      height: 75vh;
-    "
-  >
-    <div class="mb-1 text-start">
-      <div class="row align-items-start">
-        <div class="col">
-          <label for="Ime" class="form-label">Ime:</label>
-          <input
-            type="text"
-            class="form-control"
-            style="border: 1px solid #5687a7"
-            formControlName="Ime"
-            placeholder="Unesite ime"
-          />
-          <span
-            *ngIf="!Ime.valid && (Ime.touched || userSubmitted)"
-            class="error-block"
-            style="color: red"
-            >Molim vas unesite ime</span
-          >
-        </div>
-        <div class="col">
-          <label for="Prezime" class="form-label">Prezime:</label>
-          <input
-            type="text"
-            class="form-control"
-            style="border: 1px solid #5687a7"
-            formControlName="Prezime"
-            placeholder="Unesite prezime"
-          />
-          <span
-            *ngIf="!Prezime.valid && (Prezime.touched || userSubmitted)"
-            class="error-block"
-            style="color: red"
-            >Molim vas unesite prezime</span
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="mb-1 text-start">
-      <div class="row align-items-start">
-        <div class="col">
-          <label for="Pol" class="form-label">Pol:</label>
-          <select
-            class="form-control"
-            style="border: 1px solid #5687a7"
-            formControlName="Pol"
-            placeholder="Unesite pol"
-          >
-            <option value="Zenski">Zenski</option>
-            <option value="Muski">Muski</option>
-          </select>
-          <span
-            *ngIf="!Pol.valid && (Pol.touched || userSubmitted)"
-            class="error-block"
-            style="color: red"
-            >Molim vas unesite pol</span
-          >
-        </div>
-        <div class="col">
-          <label for="DatumRodjenja" class="form-label">Datum rodjenja:</label>
-          <input
-            type="date"
-            class="form-control"
-            style="border: 1px solid #5687a7"
-            formControlName="DatumRodjenja"
-            placeholder="Unesite datum rodjenja"
-          />
-          <span
-            *ngIf="
-              !DatumRodjenja.valid && (DatumRodjenja.touched || userSubmitted)
-            "
-            class="error-block"
-            style="color: red"
-            >Molim vas unesite datum rodjenja</span
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="mb-1 text-start">
-      <div class="row align-items-start">
-        <div class="col">
-          <label for="DatumRodjenja" class="form-label">Drzava:</label>
-          <input
-            type="text"
-            class="form-control"
-            style="border: 1px solid #5687a7"
-            formControlName="Drzava"
-            placeholder="Unesite drzavu"
-          />
-          <span
-            *ngIf="!Drzava.valid && (Drzava.touched || userSubmitted)"
-            class="error-block"
-            style="color: red"
-            >Molim vas unesite drzava</span
-          >
-        </div>
-        <div class="col">
-          <label for="Pol" class="form-label">Grad:</label>
-          <input
-            type="text"
-            class="form-control"
-            style="border: 1px solid #5687a7"
-            formControlName="Grad"
-            placeholder="Unesite grad"
-          />
-          <span
-            *ngIf="!Grad.valid && (Grad.touched || userSubmitted)"
-            class="error-block"
-            style="color: red"
-            >Molim vas unesite grad</span
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="mb-1 text-start">
-      <div class="row align-items-start">
-        <div class="col">
-          <label for="Adresa" class="form-label">Adresa:</label>
-          <input
-            type="text"
-            class="form-control"
-            style="border: 1px solid #5687a7"
-            formControlName="Adresa"
-            placeholder="Unesite adresu"
-          />
-          <span
-            *ngIf="!Adresa.valid && (Adresa.touched || userSubmitted)"
-            class="error-block"
-            style="color: red"
-            >Molim vas unesite adresa</span
-          >
-        </div>
-        <div class="col">
-          <label for="BrojTelefona" class="form-label">Broj telefona:</label>
-          <div class="input-group-prepend d-flex">
-            <span
-              class="input-group-text"
-              style="border: 1px solid #5687a7; color: #5687a7"
-              >+381</span
-            >
-            <input
-              type="text"
-              class="form-control"
-              style="border: 1px solid #5687a7"
-              formControlName="Telefon"
-              placeholder="Unesite broj telefona"
-            />
-          </div>
-          <span
-            *ngIf="!Telefon.valid && (Telefon.touched || userSubmitted)"
-            class="error-block"
-            style="color: red"
-            >Molim vas unesite telefon</span
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="mb-1">
-      <label for="" class="form-label">Email:</label>
-      <input
-        type="type"
-        class="form-control"
-        formControlName="Email"
-        placeholder="Unesite email"
-      />
-      <span
-        *ngIf="!Email.valid && (Email.touched || userSubmitted)"
-        class="error-block"
-        style="color: red"
-        >Molim vas unesite email</span
-      >
-    </div>
-
-    <button
-      type="submit"
-      class="btn btn-warning w-100"
+  <div class="col-md-9" style="width: 75%">
+    <div
+      class="container text-center mr-5 ml-5 mt-1 p-2"
       style="
-        border: 1px solid black;
-        background-color: #0c3f61;
-        color: white;
-        border: 1px solid white;
+        border-radius: 5px;
+        width: 90%;
+        background-color: #126094;
+        position: relative;
       "
     >
-      Potvrdi
-    </button>
-  </form>
+      <h2 style="color: white; font-family: 'Jackues Francios'" class="pt-1">
+        KARTON
+      </h2>
+      <hr style="border: 1px solid white" />
+
+      <form
+        [formGroup]="addForm"
+        (ngSubmit)="onSubmit()"
+        class="text-start d-flex flex-column"
+        style="
+          font-family: 'Caladea';
+          color: white;
+          justify-content: space-between;
+          height: 75vh;
+        "
+      >
+        <div class="mb-1 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="Ime" class="form-label">Ime:</label>
+              <input
+                type="text"
+                class="form-control"
+                style="border: 1px solid #5687a7"
+                formControlName="Ime"
+                placeholder="Unesite ime"
+              />
+              <span
+                *ngIf="!Ime.valid && (Ime.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite ime</span
+              >
+            </div>
+            <div class="col">
+              <label for="Prezime" class="form-label">Prezime:</label>
+              <input
+                type="text"
+                class="form-control"
+                style="border: 1px solid #5687a7"
+                formControlName="Prezime"
+                placeholder="Unesite prezime"
+              />
+              <span
+                *ngIf="!Prezime.valid && (Prezime.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite prezime</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-1 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="Pol" class="form-label">Pol:</label>
+              <select
+                class="form-control"
+                style="border: 1px solid #5687a7"
+                formControlName="Pol"
+                placeholder="Unesite pol"
+              >
+                <option value="Zenski">Zenski</option>
+                <option value="Muski">Muski</option>
+              </select>
+              <span
+                *ngIf="!Pol.valid && (Pol.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite pol</span
+              >
+            </div>
+            <div class="col">
+              <label for="DatumRodjenja" class="form-label"
+                >Datum rodjenja:</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                style="border: 1px solid #5687a7"
+                formControlName="DatumRodjenja"
+                placeholder="Unesite datum rodjenja"
+              />
+              <span
+                *ngIf="
+                  !DatumRodjenja.valid &&
+                  (DatumRodjenja.touched || userSubmitted)
+                "
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite datum rodjenja</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-1 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="DatumRodjenja" class="form-label">Drzava:</label>
+              <input
+                type="text"
+                class="form-control"
+                style="border: 1px solid #5687a7"
+                formControlName="Drzava"
+                placeholder="Unesite drzavu"
+              />
+              <span
+                *ngIf="!Drzava.valid && (Drzava.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite drzava</span
+              >
+            </div>
+            <div class="col">
+              <label for="Pol" class="form-label">Grad:</label>
+              <input
+                type="text"
+                class="form-control"
+                style="border: 1px solid #5687a7"
+                formControlName="Grad"
+                placeholder="Unesite grad"
+              />
+              <span
+                *ngIf="!Grad.valid && (Grad.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite grad</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-1 text-start">
+          <div class="row align-items-start">
+            <div class="col">
+              <label for="Adresa" class="form-label">Adresa:</label>
+              <input
+                type="text"
+                class="form-control"
+                style="border: 1px solid #5687a7"
+                formControlName="Adresa"
+                placeholder="Unesite adresu"
+              />
+              <span
+                *ngIf="!Adresa.valid && (Adresa.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite adresa</span
+              >
+            </div>
+            <div class="col">
+              <label for="BrojTelefona" class="form-label"
+                >Broj telefona:</label
+              >
+              <div class="input-group-prepend d-flex">
+                <span
+                  class="input-group-text"
+                  style="border: 1px solid #5687a7; color: #5687a7"
+                  >+381</span
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  style="border: 1px solid #5687a7"
+                  formControlName="Telefon"
+                  placeholder="Unesite broj telefona"
+                />
+              </div>
+              <span
+                *ngIf="!Telefon.valid && (Telefon.touched || userSubmitted)"
+                class="error-block"
+                style="color: red"
+                >Molim vas unesite telefon</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-1">
+          <label for="" class="form-label">Email:</label>
+          <input
+            type="type"
+            class="form-control"
+            formControlName="Email"
+            placeholder="Unesite email"
+          />
+          <span
+            *ngIf="!Email.valid && (Email.touched || userSubmitted)"
+            class="error-block"
+            style="color: red"
+            >Molim vas unesite email</span
+          >
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-warning w-100"
+          style="
+            border: 1px solid black;
+            background-color: #0c3f61;
+            color: white;
+            border: 1px solid white;
+          "
+        >
+          Potvrdi
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
