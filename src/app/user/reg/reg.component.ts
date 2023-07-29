@@ -172,7 +172,7 @@ export class RegComponent implements OnInit {
           this.registrationForm.reset();
           this.userSubmitted = false;
           alert('Čestitamo, uspešno ste se registrovali!');
-          this.router.navigate(['prijava']);
+          this.router.navigate(['/']);
         },
         (error: HttpErrorResponse) => {
           if (error.status === 400) {
